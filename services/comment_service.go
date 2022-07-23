@@ -2,12 +2,16 @@ package services
 
 import (
 	"errors"
+	"fmt"
 
 	"github.com/andreasyunanto/socmed-sgrpc/pb"
 	"github.com/andreasyunanto/socmed-sgrpc/repositories"
 )
 
 func GetCommentByPost(repo *repositories.CommentRepository, id string) (*pb.GetCommentsResponse, error) {
+
+	fmt.Println("Call GetCommentByPost on Socmed Server via gRPC with param:", id)
+
 	operationResult, err := repo.GetCommentByPost(id)
 
 	if err != nil {

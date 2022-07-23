@@ -18,6 +18,12 @@ message GetPostResponse {
     string message = 3;
 }
 
+message AddPostRequest {
+    string user_id = 1;
+    string contents = 2;
+}
+
 service PostService {
     rpc GetPostById(GetPostRequest) returns (GetPostResponse) {}
+    rpc AddPost(AddPostRequest) returns (GetPostResponse) {}
 }

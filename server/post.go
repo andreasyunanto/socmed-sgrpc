@@ -17,3 +17,7 @@ func (s *PostServer) GetPostById(ctx context.Context, req *pb.GetPostRequest) (*
 	return services.GetPostById(&repositories.PostRepository{}, postId)
 
 }
+
+func (s *PostServer) AddPost(ctx context.Context, req *pb.AddPostRequest) (*pb.GetPostResponse, error) {
+	return services.CreatePost(&repositories.PostRepository{}, req)
+}
