@@ -36,6 +36,7 @@ func (r *PostRepository) CreatePost(req *pb.AddPostRequest) (models.Post, error)
 	var post models.Post
 
 	post.PostId = uuid.New().String()
+	post.UserId = req.UserId
 	post.Contents = req.Contents
 	err := database.DB.Save(&post).Error
 	if err != nil {
