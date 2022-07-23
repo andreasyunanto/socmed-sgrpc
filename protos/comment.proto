@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package comment;
+
+option go_package = "./pb";
+
+message Comment {
+  string comment_id = 1;
+  string post_id = 2;
+  string comments = 3;
+}
+
+message GetCommentsRequest { string post_id = 1; }
+
+message CommentData {
+    repeated Comment items = 1;
+}
+
+message GetCommentsResponse {
+    bool status = 1;
+    CommentData data = 2;
+    string message = 3;
+}
+
+service CommentService {
+    rpc GetCommentByPost(GetCommentsRequest) returns (GetCommentsResponse) {}
+}

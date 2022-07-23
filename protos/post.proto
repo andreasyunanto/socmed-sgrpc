@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package post;
+
+option go_package = "./pb";
+
+message Post {
+  string post_id = 1;
+  string user_id = 2;
+  string contents = 3;
+}
+
+message GetPostRequest { string post_id = 1; }
+
+message GetPostResponse {
+    bool status = 1;
+    Post data = 2;
+    string message = 3;
+}
+
+service PostService {
+    rpc GetPostById(GetPostRequest) returns (GetPostResponse) {}
+}
