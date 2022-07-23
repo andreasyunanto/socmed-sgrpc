@@ -2,6 +2,7 @@ package services
 
 import (
 	"errors"
+	"fmt"
 
 	"github.com/andreasyunanto/socmed-sgrpc/pb"
 	"github.com/andreasyunanto/socmed-sgrpc/repositories"
@@ -16,6 +17,7 @@ func GetPostById(repo *repositories.PostRepository, id string) (*pb.GetPostRespo
 	}
 
 	var data *pb.Post = &pb.Post{
+		UserId:   operationResult.UserId,
 		PostId:   operationResult.PostId,
 		Contents: operationResult.Contents,
 	}
@@ -27,7 +29,11 @@ func GetPostById(repo *repositories.PostRepository, id string) (*pb.GetPostRespo
 	}, nil
 }
 
+// Create Post
 func CreatePost(repo *repositories.PostRepository, req *pb.AddPostRequest) (*pb.GetPostResponse, error) {
+
+	fmt.Println("Call CreatePost on Socmed Server via gRPC with param:", req)
+
 	operationResult, err := repo.CreatePost(req)
 	if err != nil {
 	}

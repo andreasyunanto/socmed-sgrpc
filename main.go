@@ -27,8 +27,6 @@ func main() {
 		log.Fatalf("failed to listen: %v", err)
 	}
 
-	// repositories.NewPostRepository(db)
-
 	// START GRPC SERVER
 	s := grpc.NewServer()
 
@@ -40,7 +38,7 @@ func main() {
 	reflection.Register(s)
 
 	go func() {
-		fmt.Println("Starting server...")
+		fmt.Println("Starting gRPC server socmed...")
 		if err := s.Serve(lis); err != nil {
 			log.Fatalf("Failed to serve: %v", err)
 		}
@@ -50,7 +48,7 @@ func main() {
 	signal.Notify(ch, os.Interrupt)
 
 	<-ch
-	fmt.Println("Stopping the server..")
+	fmt.Println("Stopping gRPC server socmed..")
 	s.Stop()
 	fmt.Println("Stopping listener...")
 	lis.Close()

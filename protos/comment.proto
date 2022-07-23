@@ -5,12 +5,12 @@ package comment;
 option go_package = "./pb";
 
 message Comment {
-  string comment_id = 1;
-  string post_id = 2;
+  string commentId = 1;
+  string postId = 2;
   string comments = 3;
 }
 
-message GetCommentsRequest { string post_id = 1; }
+message GetCommentsRequest { string postId = 1; }
 
 message CommentData {
     repeated Comment items = 1;
